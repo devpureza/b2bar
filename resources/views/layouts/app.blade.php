@@ -228,9 +228,9 @@
                 <div class="col-md-4">
                     <h5>Contato</h5>
                     <ul class="list-unstyled">
-                        <li><i class="bi bi-geo-alt me-2"></i> Edifício Corporativo, 3º andar</li>
+                        <li><i class="bi bi-geo-alt me-2"></i> Av. Quitandinha, n° 600</li>
                         <li><i class="bi bi-telephone me-2"></i> (11) 1234-5678</li>
-                        <li><i class="bi bi-envelope me-2"></i> contato@b2bar.com</li>
+                        <li><i class="bi bi-envelope me-2"></i> contato@b2agencia.com.br</li>
                     </ul>
                 </div>
             </div>
