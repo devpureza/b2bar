@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pedido;
+use App\Models\PedidoItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class PagamentoController extends Controller
 {
@@ -34,11 +37,33 @@ class PagamentoController extends Controller
             return redirect()->route('cardapio.index')->with('erro', 'Seu carrinho está vazio.');
         }
         
-        // Aqui você processaria o pedido e salvaria no banco de dados
-        // Para este exemplo, apenas simularemos o processo
+        // Calcular total
+        $total = collect($itensCarrinho)->sum('subtotal');
         
         // Gerar número de pedido
         $numeroPedido = 'PED-' . strtoupper(substr(md5(uniqid()), 0, 8));
+        
+        // Criar pedido no banco de dados
+        $pedido = Pedido::create([
+            'numero_pedido' => $numeroPedido,
+            'nome_cliente' => $request->nome,
+            'forma_pagamento' => $request->forma_pagamento,
+            'observacao' => $request->observacao,
+            'total' => $total,
+            'status' => Pedido::STATUS_RECEBIDO
+        ]);
+        
+        // Adicionar itens do pedido
+        foreach ($itensCarrinho as $item) {
+            PedidoItem::create([
+                'pedido_id' => $pedido->id,
+                'produto_id' => $item['id'],
+                'nome_produto' => $item['nome'],
+                'preco_unitario' => $item['preco'],
+                'quantidade' => $item['quantidade'],
+                'subtotal' => $item['subtotal']
+            ]);
+        }
         
         // Limpar o carrinho
         Session::forget('carrinho');

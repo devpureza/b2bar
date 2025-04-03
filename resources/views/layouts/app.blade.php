@@ -236,7 +236,10 @@
             </div>
             <div class="row mt-4 pt-4 border-top border-secondary">
                 <div class="col-12 text-center">
-                    <p class="mb-0">© {{ date('Y') }} B2 Bar - Todos os direitos reservados.</p>
+                    <p class="mb-2">© {{ date('Y') }} B2 Bar - Todos os direitos reservados.</p>
+                    <a href="{{ route('admin.pedidos.recentes') }}" class="text-light text-decoration-none small">
+                        <i class="bi bi-shield-lock"></i> Área do Funcionário
+                    </a>
                 </div>
             </div>
         </div>

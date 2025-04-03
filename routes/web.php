@@ -19,3 +19,11 @@ Route::delete('/carrinho', [CarrinhoController::class, 'limpar'])->name('carrinh
 Route::get('/checkout', [PagamentoController::class, 'checkout'])->name('pagamento.checkout');
 Route::post('/checkout/processar', [PagamentoController::class, 'processar'])->name('pagamento.processar');
 Route::get('/pedido/sucesso', [PagamentoController::class, 'sucesso'])->name('pagamento.sucesso');
+
+// Rotas da Área Administrativa
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/pedidos', [App\Http\Controllers\Admin\PedidoController::class, 'index'])->name('pedidos.index');
+    Route::get('/pedidos/recentes', [App\Http\Controllers\Admin\PedidoController::class, 'pedidosRecentes'])->name('pedidos.recentes');
+    Route::get('/pedidos/{pedido}', [App\Http\Controllers\Admin\PedidoController::class, 'detalhes'])->name('pedidos.detalhes');
+    Route::put('/pedidos/{pedido}/status', [App\Http\Controllers\Admin\PedidoController::class, 'atualizarStatus'])->name('pedidos.atualizar-status');
+});
