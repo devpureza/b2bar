@@ -16,7 +16,7 @@ class CardapioController extends Controller
                 'nome' => 'X-Burger',
                 'descricao' => 'Hambúrguer, queijo, alface, tomate e maionese',
                 'preco' => 15.90,
-                'categoria' => 'Sanduíches',
+                'categoria' => 'Sanduíche',
                 'imagem' => 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=600&fit=crop'
             ],
             [
